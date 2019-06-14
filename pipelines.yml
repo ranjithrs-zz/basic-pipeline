@@ -1,0 +1,63 @@
+resources:
+  - name: simple_app
+    type: GitRepo
+    configuration:
+      gitProvider: ranjithrs_github
+      path: ranjithrs/carbot
+      branches:
+        include: master
+
+pipelines:
+  - name: simple_pipeline
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+          inputResources:
+            - name: simple_app
+        execution:
+          onExecute:
+            - printenv
+
+      - name: step_2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_1
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+        execution:
+          onExecute:
+            - printenv
+
+      - name: step_3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_1
+          runtime:
+            type: image
+            image:
+              auto:
+                language: nodejs
+        execution:
+          onExecute:
+            - printenv
+
+      - name: step_4
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: step_2
+            - name: step_3
+          runtime:
+            type: image
+            image:
+              auto:
+                language: go             
+        execution:
+          onExecute:
+            - printenv
