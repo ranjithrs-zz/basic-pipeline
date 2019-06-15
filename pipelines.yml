@@ -39,8 +39,6 @@ pipelines:
         configuration:
           integrations:
             - name: art
-          inputSteps:
-            - name: step_1
           inputResources:
             - name: myFile            
           runtime:
