@@ -39,8 +39,6 @@ pipelines:
             - name: art
           inputSteps:
             - name: step_1
-          outputResources:
-            - name: myFile
           runtime:
             type: image
             image:
@@ -57,9 +55,8 @@ pipelines:
         configuration:
           inputSteps:
             - name: step_1
-          inputResources:
-            - name: myFile
-              trigger: false
+          outputResources:
+            - name: myFile            
           runtime:
             type: image
             image:
@@ -75,6 +72,9 @@ pipelines:
           inputSteps:
             - name: step_2
             - name: step_3
+          inputResources:
+            - name: myFile
+              trigger: false            
           runtime:
             type: image
             image:
