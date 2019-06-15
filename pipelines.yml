@@ -1,15 +1,15 @@
 resources:
-  - name: simple_app
+  - name: car_app
     type: GitRepo
     configuration:
-      gitProvider: ranjithrs_github
+      gitProvider: ranjithr_github
       path: ranjithrs/carbot
       branches:
         include: master
   - name: my
     type: GitRepo
     configuration:
-      gitProvider: ranjithrs_github
+      gitProvider: ranjithr_github
       path: ranjithrs/carbot
       branches:
         include: master    
@@ -20,7 +20,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: simple_app
+            - name: car_app
         execution:
           onExecute:
             - printenv
