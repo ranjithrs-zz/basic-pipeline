@@ -6,7 +6,13 @@ resources:
       path: ranjithrs/carbot
       branches:
         include: master
-
+  - name: my
+    type: GitRepo
+    configuration:
+      gitProvider: ranjithrs_github
+      path: ranjithrs/carbot
+      branches:
+        include: master    
 pipelines:
   - name: simple_pipeline
     steps:
@@ -22,6 +28,8 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
+          integrations:
+            - art
           inputSteps:
             - name: step_1
           runtime:
@@ -36,6 +44,8 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
+          inputResources:
+            - 
           inputSteps:
             - name: step_1
           runtime:
