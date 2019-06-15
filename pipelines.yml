@@ -31,7 +31,7 @@ pipelines:
         type: Bash
         configuration:
           integrations:
-            - art
+            - name: art
           inputSteps:
             - name: step_1
           runtime:
@@ -48,8 +48,6 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
-          inputResources:
-            - 
           inputSteps:
             - name: step_1
           runtime:
