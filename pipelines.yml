@@ -26,6 +26,8 @@ pipelines:
         configuration:
           inputResources:
             - name: car_app
+          outputResources:
+            - name: myFile             
         execution:
           onExecute:
             - printenv
@@ -39,6 +41,8 @@ pipelines:
             - name: art
           inputSteps:
             - name: step_1
+          inputResources:
+            - name: myFile            
           runtime:
             type: image
             image:
@@ -55,8 +59,7 @@ pipelines:
         configuration:
           inputSteps:
             - name: step_1
-          outputResources:
-            - name: myFile            
+           
           runtime:
             type: image
             image:
@@ -72,8 +75,6 @@ pipelines:
           inputSteps:
             - name: step_2
             - name: step_3
-          inputResources:
-            - name: myFile
           runtime:
             type: image
             image:
