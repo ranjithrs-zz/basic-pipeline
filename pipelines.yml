@@ -56,7 +56,7 @@ pipelines:
         type: Bash
         configuration:
           inputSteps:
-            - name: step_1
+            - name: step_2
            
           runtime:
             type: image
@@ -72,7 +72,6 @@ pipelines:
         configuration:
           inputSteps:
             - name: step_2
-            - name: step_3
           runtime:
             type: image
             image:
