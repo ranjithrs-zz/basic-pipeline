@@ -31,7 +31,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - add_pipeline_variables pipeline_var=1
+            - if [ -z $pipeline_var ]; then add_pipeline_variables pipeline_var=1; else echo $pipeline_var; fi
             - add_run_variables run_var="hello"
 
       - name: step_2
