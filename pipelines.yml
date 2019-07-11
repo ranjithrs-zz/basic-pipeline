@@ -51,7 +51,7 @@ pipelines:
             - printenv
             - if [[ $(($pipeline_var % 2)) -eq 0 ]]; then run_var+=" world"; else run_var+=" universe"; fi
             - echo $run_var  
-            - add_pipeline_variables pipeline_var=pipeline_var+=1
+            - add_pipeline_variables pipeline_var=pipeline_var+1
 
       - name: step_3
         type: Bash
