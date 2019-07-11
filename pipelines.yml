@@ -31,8 +31,8 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - add_pipeline_variable pipeline_var=1
-            - add_run_variable run_var="hello"
+            - add_pipeline_variables pipeline_var=1
+            - add_run_variables run_var="hello"
 
       - name: step_2
         type: Bash
