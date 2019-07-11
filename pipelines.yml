@@ -49,11 +49,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - if [[ $(($pipeline_var % 2)) -eq 0 ]]; then 
-                $run_var+=" world" 
-              else 
-                $run_var+=" universe" 
-              fi
+            - if [[ $(($pipeline_var % 2)) -eq 0 ]]; then $run_var+=" world"; else $run_var+=" universe"; fi
             - echo $run_var  
             - $pipeline_var++
 
