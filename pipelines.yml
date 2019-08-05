@@ -20,12 +20,11 @@ resources:
         
 pipelines:
   - name: simple_pipeline
-    configuration:
-      nodePool: ranjithr_pool  
     steps:
       - name: step_1
         type: Bash
         configuration:
+          nodePool: ranjithr_pool 
           inputResources:
             - name: car_app
           outputResources:
@@ -39,6 +38,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
+          nodePool: ranjithr_pool 
           integrations:
             - name: art
           inputResources:
@@ -58,6 +58,7 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
+          nodePool: ranjithr_pool 
           inputSteps:
             - name: step_2
            
@@ -73,6 +74,7 @@ pipelines:
       - name: step_4
         type: Bash
         configuration:
+          nodePool: ranjithr_pool 
           inputSteps:
             - name: step_2
           runtime:
