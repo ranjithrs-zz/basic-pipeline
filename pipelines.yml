@@ -20,6 +20,8 @@ resources:
         
 pipelines:
   - name: simple_pipeline
+    configuration:
+      nodePool: ranjithr_pool  
     steps:
       - name: step_1
         type: Bash
