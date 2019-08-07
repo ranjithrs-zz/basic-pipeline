@@ -61,7 +61,6 @@ pipelines:
           nodePool: ranjithr_pool 
           environmentVariables:
             env_var1: "hello"
-            env_var2: "world"
           inputSteps:
             - name: step_2
           runtime:
@@ -72,7 +71,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - echo $env_var1 + " " + $env_var2
+            - echo $env_var1
 
       - name: step_4
         type: Bash
