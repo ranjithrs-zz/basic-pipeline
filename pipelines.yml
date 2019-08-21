@@ -88,16 +88,16 @@ pipelines:
           onExecute:
             - printenv
        - name: step_5
-        type: Bash
-        configuration:
-          nodePool: ranjithr_pool 
-          inputSteps:
-            - name: step_4
-          runtime:
-            type: image
-            image:
-              auto:
-                language: go             
-        execution:
-          onExecute:
-            - printenv           
+         type: Bash
+         configuration:
+           nodePool: ranjithr_pool 
+           inputSteps:
+             - name: step_4
+           runtime:
+             type: image
+             image:
+               auto:
+                 language: go             
+         execution:
+           onExecute:
+             - printenv           
