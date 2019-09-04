@@ -70,7 +70,7 @@ pipelines:
                 language: nodejs
         execution:
           onExecute:
-            - printenv
+            - add_run_variables step3_var="1"
             - echo $env_var1
 
       - name: step_4
@@ -86,7 +86,7 @@ pipelines:
                 language: go             
         execution:
           onExecute:
-            - printenv
+            - add_run_variables step4_var="1"
       - name: step_5
         type: Bash
         configuration:
@@ -121,7 +121,9 @@ pipelines:
           nodePool: ranjithr_pool 
           inputSteps:
             - name: step_3
+              trigger: false
             - name: step_4
+              trigger: false
             - name: step_5
             - name: step_6            
           runtime:
