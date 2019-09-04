@@ -131,4 +131,18 @@ pipelines:
                 language: go             
         execution:
           onExecute:
-            - printenv               
+            - echo "step 7"   
+      - name: step_8
+        type: Bash
+        configuration:
+          nodePool: ranjithr_pool 
+          inputSteps:
+            - name: step_7
+          runtime:
+            type: image
+            image:
+              auto:
+                language: go             
+        execution:
+          onExecute:
+            - echo "step 8"            
