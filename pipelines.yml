@@ -86,4 +86,49 @@ pipelines:
                 language: go             
         execution:
           onExecute:
-            - printenv        
+            - printenv
+      - name: step_5
+        type: Bash
+        configuration:
+          nodePool: ranjithr_pool 
+          inputSteps:
+            - name: step_2
+          runtime:
+            type: image
+            image:
+              auto:
+                language: go             
+        execution:
+          onExecute:
+            - echo "step 5"
+      - name: step_6
+        type: Bash
+        configuration:
+          nodePool: ranjithr_pool 
+          inputSteps:
+            - name: step_2
+          runtime:
+            type: image
+            image:
+              auto:
+                language: go             
+        execution:
+          onExecute:
+            - echo "step 6"
+      - name: step_7
+        type: Bash
+        configuration:
+          nodePool: ranjithr_pool 
+          inputSteps:
+            - name: step_3
+            - name: step_4
+            - name: step_5
+            - name: step_6            
+          runtime:
+            type: image
+            image:
+              auto:
+                language: go             
+        execution:
+          onExecute:
+            - printenv               
