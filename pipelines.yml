@@ -121,9 +121,7 @@ pipelines:
           nodePool: ranjithr_pool 
           inputSteps:
             - name: step_3
-              trigger: false
             - name: step_4
-              trigger: false
             - name: step_5
             - name: step_6            
           runtime:
