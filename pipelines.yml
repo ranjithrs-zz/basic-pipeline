@@ -137,7 +137,7 @@ pipelines:
         configuration:
           nodePool: ranjithr_pool
           environmentVariables:
-            - something: $run_number
+            something: $run_number
           inputSteps:
             - name: step_7
           runtime:
