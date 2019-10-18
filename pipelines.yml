@@ -35,7 +35,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: myGitRepo
+            - name: myBBGitRepo
               trigger: false
           integrations:
             - name: ranjithr_sshkey
