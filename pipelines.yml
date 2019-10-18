@@ -24,7 +24,7 @@ resources:
       path: ~ranjithr/myfirstrepo
         
 pipelines:
-  - name: demoPipelines
+  - name: demoBBPipeline
     configuration:
       environmentVariables:
         readOnly:
