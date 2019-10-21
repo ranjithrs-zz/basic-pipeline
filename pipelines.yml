@@ -17,35 +17,7 @@ resources:
     type: RemoteFile
     configuration:
       source: dummyFileServer
-  - name: myBBGitRepo
-    type: GitRepo
-    configuration:
-      gitProvider: ranjithrBB
-      path: ~ranjithr/myfirstrepo
-        
-pipelines:
-  - name: demoBBPipeline
-    configuration:
-      environmentVariables:
-        readOnly:
-          NEW_APP_VERSION: test_tag_push
-          BRANCH_NAME: feature/ISS-1
-    steps:
-      - name: gitPush
-        type: Bash
-        configuration:
-          inputResources:
-            - name: myBBGitRepo
-              trigger: false
-          integrations:
-            - name: ranjithr_sshkey
-        execution:
-          onExecute:
-            - git fetch origin $BRANCH_NAME && git checkout $BRANCH_NAME
-            - git branch && git rev-parse HEAD && git status
-            - git tag ${NEW_APP_VERSION}
-            - git push origin ${APP_VERSION}
-            - git tag
+
   - name: simple_pipeline
     steps:
       - name: step_1
