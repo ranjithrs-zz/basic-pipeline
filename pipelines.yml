@@ -39,7 +39,7 @@ pipelines:
         configuration:
           nodePool: ranjithr_pool 
           integrations:
-            - name: art12
+            - name: art
           inputResources:
             - name: myFile            
           runtime:
