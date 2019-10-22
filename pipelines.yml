@@ -17,7 +17,7 @@ resources:
     type: RemoteFile
     configuration:
       source: dummyFileServer
-
+pipelines:
   - name: simple_pipeline
     steps:
       - name: step_1
