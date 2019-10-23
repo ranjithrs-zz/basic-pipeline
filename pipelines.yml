@@ -37,7 +37,7 @@ pipelines:
             - if [ -z $pipeline_var ]; then add_pipeline_variables pipeline_var=1; else echo $pipeline_var; fi
             - add_run_variables run_var="hello"
             - cd $res_car_app_resourcePath
-            - echo BRANCH=$branchName
+            - echo $branchName
             - git branch
             - git fetch origin $branchName && git checkout $branchName
             - git branch
