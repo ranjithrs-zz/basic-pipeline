@@ -19,11 +19,14 @@ resources:
       source: dummyFileServer
 pipelines:
   - name: simple_pipeline
+    configuration:
+      environmentVariables:
+        readOnly:
+          branchName: dev  
     steps:
       - name: step_1
         type: Bash
         configuration:
-          nodePool: ranjithr_pool 
           inputResources:
             - name: car_app
           outputResources:
@@ -33,11 +36,14 @@ pipelines:
             - printenv
             - if [ -z $pipeline_var ]; then add_pipeline_variables pipeline_var=1; else echo $pipeline_var; fi
             - add_run_variables run_var="hello"
-
+            - cd $res_car_app_resourcePath
+            - echo BRANCH=$branchName
+            - git branch
+            - git fetch origin $branchName && git checkout $branchName
+            - git branch
       - name: step_2
         type: Bash
         configuration:
-          nodePool: ranjithr_pool 
           integrations:
             - name: art
           inputResources:
@@ -57,7 +63,6 @@ pipelines:
       - name: step_3
         type: Bash
         configuration:
-          nodePool: ranjithr_pool 
           environmentVariables:
             env_var1: "hello"
           inputSteps:
@@ -75,7 +80,6 @@ pipelines:
       - name: step_4
         type: Bash
         configuration:
-          nodePool: ranjithr_pool 
           inputSteps:
             - name: step_2
           runtime:
@@ -103,7 +107,6 @@ pipelines:
       - name: step_6
         type: Bash
         configuration:
-          nodePool: ranjithr_pool 
           inputSteps:
             - name: step_2
           runtime:
@@ -117,7 +120,6 @@ pipelines:
       - name: step_7
         type: Bash
         configuration:
-          nodePool: ranjithr_pool 
           inputSteps:
             - name: step_3
             - name: step_4
@@ -134,7 +136,6 @@ pipelines:
       - name: step_8
         type: Bash
         configuration:
-          nodePool: ranjithr_pool
           environmentVariables:
             something: $run_number
           inputSteps:
