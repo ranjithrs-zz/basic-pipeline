@@ -53,6 +53,7 @@ pipelines:
             image:
               auto:
                 language: java
+                versions: 1.0.0
         execution:
           onExecute:
             - printenv
@@ -67,11 +68,6 @@ pipelines:
             env_var1: "hello"
           inputSteps:
             - name: step_2
-          runtime:
-            type: image
-            image:
-              auto:
-                language: nodejs
         execution:
           onExecute:
             - add_run_variables step3_var="1"
@@ -82,11 +78,6 @@ pipelines:
         configuration:
           inputSteps:
             - name: step_2
-          runtime:
-            type: image
-            image:
-              auto:
-                language: go             
         execution:
           onExecute:
             - add_run_variables step4_var="1"
@@ -96,11 +87,6 @@ pipelines:
           nodePool: ranjithr_pool 
           inputSteps:
             - name: step_2
-          runtime:
-            type: image
-            image:
-              auto:
-                language: go             
         execution:
           onExecute:
             - echo "step 5"
@@ -109,11 +95,6 @@ pipelines:
         configuration:
           inputSteps:
             - name: step_2
-          runtime:
-            type: image
-            image:
-              auto:
-                language: go             
         execution:
           onExecute:
             - echo "step 6"
@@ -125,11 +106,6 @@ pipelines:
             - name: step_4
             - name: step_5
             - name: step_6            
-          runtime:
-            type: image
-            image:
-              auto:
-                language: go             
         execution:
           onExecute:
             - echo "step 7"   
@@ -140,11 +116,6 @@ pipelines:
             something: $run_number
           inputSteps:
             - name: step_7
-          runtime:
-            type: image
-            image:
-              auto:
-                language: go             
         execution:
           onExecute:
             - echo $something            
