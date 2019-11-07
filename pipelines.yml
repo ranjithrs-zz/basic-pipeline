@@ -84,7 +84,6 @@ pipelines:
       - name: step_5
         type: Bash
         configuration:
-          nodePool: ranjithr_pool 
           inputSteps:
             - name: step_2
         execution:
