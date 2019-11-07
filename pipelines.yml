@@ -44,8 +44,6 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
-          integrations:
-            - name: art
           inputResources:
             - name: myFile            
           runtime:
