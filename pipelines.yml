@@ -18,7 +18,7 @@ resources:
     configuration:
       source: dummyFileServer
   - name: myJenkinsTrigger
-    type: WebHook
+    type: OutgoingWebhook
     configuration:
       webhookName: jenkinswebhook  
 pipelines:
