@@ -18,7 +18,7 @@ resources:
     configuration:
       source: dummyFileServer
   - name: myJenkinsTrigger
-    type: Wehbook
+    type: WebHook
     configuration:
       webhookName: jenkinswebhook  
 pipelines:
