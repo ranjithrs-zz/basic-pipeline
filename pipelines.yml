@@ -17,7 +17,18 @@ resources:
     type: RemoteFile
     configuration:
       source: dummyFileServer
+  - name: myJenkinsTrigger
+    type: Wehbook
+    configuration:
+      webhookName: jenkinswebhook  
 pipelines:
+  - name: jenkins_trigger
+    steps:
+      - name: step_1
+        type: Bash
+        configuration:
+          outputResources:
+            - name: myJenkinsTrigger
   - name: simple_pipeline
     configuration:
       environmentVariables:
