@@ -21,18 +21,7 @@ resources:
     type: OutgoingWebhook
     configuration:
       webhookName: jenkinswebhook  
-pipelines:
-  - name: jenkins_trigger
-    steps:
-      - name: step_1
-        type: Bash
-        configuration:
-          outputResources:
-            - name: myJenkinsTrigger
-        execution:
-          onExecute:
-            - echo 'Triggered Jenkins job'
-            
+pipelines:  
   - name: simple_pipeline
     configuration:
       environmentVariables:
