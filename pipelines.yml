@@ -17,6 +17,20 @@ resources:
     type: RemoteFile
     configuration:
       source: dummyFileServer
+  - name: repo_docker_build_push
+    type: GitRepo
+    configuration:
+      gitProvider: ranjithr_github                                     # replace with your integration
+      path: mycompany/jfrog-pipelines-docker-build-push         # replace with your repository name
+      branches:
+        include: master
+ 
+  - name: build_info_docker_build_push
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: svc_build
+      buildNumber: 1      
 pipelines:  
   - name: simple_pipeline
     configuration:
@@ -115,4 +129,36 @@ pipelines:
             - name: step_7
         execution:
           onExecute:
-            - echo $something            
+            - echo $something          
+  - name: docker_build_pipeline
+    steps:
+      - name: docker_build
+        type: DockerBuild
+        configuration:
+          affinityGroup: docker_afgroup             # Execute build and push on the same node
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: jfrog.local:5000/alpine37
+          dockerImageTag: $run_number
+          inputResources:
+            - name: repo_docker_build_push
+          integrations:
+            - name: art
+ 
+      - name: docker_push
+        type: DockerPush
+        configuration:
+          affinityGroup: docker_afgroup             # Execute build and push on the same node
+          targetRepository: docker-local
+          integrations:
+            - name: art
+          inputSteps:
+            - name: docker_build
+ 
+      - name: publish_build_info
+        type: PublishBuildInfo
+        configuration:
+          inputSteps:
+            - name: docker_push
+          outputResources:
+            - name: build_info_docker_build_push
