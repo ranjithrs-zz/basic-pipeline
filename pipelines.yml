@@ -25,6 +25,18 @@ resources:
       buildName: svc_build
       buildNumber: 1      
 pipelines:  
+  - name: dummy_pipeline
+    configuration:
+      environmentVariables:
+        readOnly:
+          myBranchName: dev  
+    steps:
+      - name: step_1
+        type: Bash
+        execution:
+          onExecute:
+            - printenv
+    
   - name: simple_pipeline
     configuration:
       environmentVariables:
